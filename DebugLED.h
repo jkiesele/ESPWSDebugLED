@@ -19,6 +19,11 @@ public:
     void setRed() { setColor(100, 0, 0); }
     void setGreen() { setColor(0, 100, 0); }
     void setBlue() { setColor(0, 0, 100); }
+    void setPurple() { setColor(100, 0, 100); }
+    void setYellow() { setColor(100, 100, 0); }
+    void setWhite() { setColor(100, 100, 100); }
+    void setOrange() { setColor(100, 50, 0); }
+    void setCyan() { setColor(0, 100, 100); }
     void setOff() { setColor(0, 0, 0); }
 };
 #endif
