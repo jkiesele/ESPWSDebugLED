@@ -25,5 +25,7 @@ public:
     void setOrange() { setColor(100, 50, 0); }
     void setCyan() { setColor(0, 100, 100); }
     void setOff() { setColor(0, 0, 0); }
+
+    bool isOn() const { return strip.Color(0, 0, 0) != 0; }
 };
 #endif
