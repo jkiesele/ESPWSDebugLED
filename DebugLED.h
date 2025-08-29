@@ -1,7 +1,17 @@
-#include <Adafruit_NeoPixel.h>
 
 #ifndef DEBUG_LED_H
 #define DEBUG_LED_H
+#include <Arduino.h>
+
+// Detect board: adjust if you have a different macro
+#if CONFIG_IDF_TARGET_ESP32S2
+  #define HAS_DEBUG_LED 0
+#else
+  #define HAS_DEBUG_LED 1
+#endif
+
+#if HAS_DEBUG_LED
+#include <Adafruit_NeoPixel.h>
 
 #define LED_PIN 21      // Hardcoded GPIO for WS2812 LED
 #define NUM_LEDS 1      // Only one LED for debugging
@@ -28,4 +38,27 @@ public:
 
     bool isOn() const { return strip.Color(0, 0, 0) != 0; }
 };
-#endif
+
+
+#else  // === Dummy implementation ===
+
+class DebugLED {
+public:
+    void begin() {}
+    void setColor(uint8_t, uint8_t, uint8_t) {}
+    void setRed() {}
+    void setGreen() {}
+    void setBlue() {}
+    void setPurple() {}
+    void setYellow() {}
+    void setWhite() {}
+    void setOrange() {}
+    void setCyan() {}
+    void setOff() {}
+    bool isOn() const { return false; }
+};
+
+#endif // HAS_DEBUG_LED
+
+
+#endif // DEBUG_LED_H
