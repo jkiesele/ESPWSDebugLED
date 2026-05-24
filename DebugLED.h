@@ -21,7 +21,7 @@ private:
     Adafruit_NeoPixel strip;
 
 public:
-    DebugLED() : strip(NUM_LEDS, LED_PIN, NEO_GRB + NEO_KHZ800) {}
+    DebugLED(uint8_t pin=LED_PIN) : strip(NUM_LEDS, pin, NEO_GRB + NEO_KHZ800) {}
 
     void begin();
     void setColor(uint8_t r, uint8_t g, uint8_t b);
